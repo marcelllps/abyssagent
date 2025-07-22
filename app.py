@@ -135,8 +135,8 @@ def ask():
     # Recupera ou cria a memória de conversa
     if client_id not in client_memories:
         client_memories[client_id] = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-    memory.chat_memory.messages.append(system_message)        
     memory = client_memories[client_id]
+    memory.chat_memory.messages.append(system_message)
 
     # Cria a cadeia de conversação com Retrieval
     qa_chain = ConversationalRetrievalChain.from_llm(
